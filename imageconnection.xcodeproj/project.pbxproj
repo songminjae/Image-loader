@@ -49,6 +49,11 @@
 		BF6EF3B123D6CE5A00B3305F /* imageconnectionUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = imageconnectionUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF6EF3B523D6CE5A00B3305F /* imageconnectionUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = imageconnectionUITests.swift; sourceTree = "<group>"; };
 		BF6EF3B723D6CE5A00B3305F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFCE457923D6D4F0001A1C0B /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
+		BFCE457A23D6D509001A1C0B /* Serverconnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serverconnection.swift; sourceTree = "<group>"; };
+		BFCE457B23D6D51B001A1C0B /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		BFCE457C23D6D52E001A1C0B /* Clientconnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clientconnection.swift; sourceTree = "<group>"; };
+		BFCE457D23D714DD001A1C0B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +111,11 @@
 				BF6EF39E23D6CE5A00B3305F /* LaunchScreen.storyboard */,
 				BF6EF3A123D6CE5A00B3305F /* Info.plist */,
 				BF6EF39B23D6CE5A00B3305F /* Preview Content */,
+				BFCE457923D6D4F0001A1C0B /* Server.swift */,
+				BFCE457A23D6D509001A1C0B /* Serverconnection.swift */,
+				BFCE457B23D6D51B001A1C0B /* Client.swift */,
+				BFCE457C23D6D52E001A1C0B /* Clientconnection.swift */,
+				BFCE457D23D714DD001A1C0B /* main.swift */,
 			);
 			path = imageconnection;
 			sourceTree = "<group>";

@@ -9,8 +9,16 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var totalclicked: Int = 0
+    
     var body: some View {
-        Text("Hello, World!")
+        VStack{
+            Text("\(totalclicked)")
+            Button(action: {self.totalclicked = self.totalclicked + 1}){
+                Text("Server ON")
+            }
+        }
     }
 }
 
@@ -19,3 +27,5 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
