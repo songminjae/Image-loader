@@ -15,6 +15,10 @@
 		BF6EF3A023D6CE5A00B3305F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF6EF39E23D6CE5A00B3305F /* LaunchScreen.storyboard */; };
 		BF6EF3AB23D6CE5A00B3305F /* imageconnectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EF3AA23D6CE5A00B3305F /* imageconnectionTests.swift */; };
 		BF6EF3B623D6CE5A00B3305F /* imageconnectionUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6EF3B523D6CE5A00B3305F /* imageconnectionUITests.swift */; };
+		BFCE45C623E0111E001A1C0B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE457B23D6D51B001A1C0B /* Client.swift */; };
+		BFCE45C723E01123001A1C0B /* Serverconnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE457A23D6D509001A1C0B /* Serverconnection.swift */; };
+		BFCE45C823E01126001A1C0B /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE457923D6D4F0001A1C0B /* Server.swift */; };
+		BFCE45C923E01129001A1C0B /* Clientconnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCE457C23D6D52E001A1C0B /* Clientconnection.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,15 +111,15 @@
 				BF6EF39323D6CE5700B3305F /* AppDelegate.swift */,
 				BF6EF39523D6CE5700B3305F /* SceneDelegate.swift */,
 				BF6EF39723D6CE5700B3305F /* ContentView.swift */,
-				BF6EF39923D6CE5A00B3305F /* Assets.xcassets */,
-				BF6EF39E23D6CE5A00B3305F /* LaunchScreen.storyboard */,
-				BF6EF3A123D6CE5A00B3305F /* Info.plist */,
-				BF6EF39B23D6CE5A00B3305F /* Preview Content */,
 				BFCE457923D6D4F0001A1C0B /* Server.swift */,
 				BFCE457A23D6D509001A1C0B /* Serverconnection.swift */,
 				BFCE457B23D6D51B001A1C0B /* Client.swift */,
 				BFCE457C23D6D52E001A1C0B /* Clientconnection.swift */,
 				BFCE457D23D714DD001A1C0B /* main.swift */,
+				BF6EF39923D6CE5A00B3305F /* Assets.xcassets */,
+				BF6EF39E23D6CE5A00B3305F /* LaunchScreen.storyboard */,
+				BF6EF3A123D6CE5A00B3305F /* Info.plist */,
+				BF6EF39B23D6CE5A00B3305F /* Preview Content */,
 			);
 			path = imageconnection;
 			sourceTree = "<group>";
@@ -277,8 +281,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFCE45C923E01129001A1C0B /* Clientconnection.swift in Sources */,
+				BFCE45C823E01126001A1C0B /* Server.swift in Sources */,
 				BF6EF39423D6CE5700B3305F /* AppDelegate.swift in Sources */,
 				BF6EF39623D6CE5700B3305F /* SceneDelegate.swift in Sources */,
+				BFCE45C623E0111E001A1C0B /* Client.swift in Sources */,
+				BFCE45C723E01123001A1C0B /* Serverconnection.swift in Sources */,
 				BF6EF39823D6CE5700B3305F /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
