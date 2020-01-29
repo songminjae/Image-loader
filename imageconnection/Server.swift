@@ -76,5 +76,12 @@ class Server{
             break
         }
     }
+    //
+    func receive(receivedmessage: String){
+        for c in self.connectionsByID.values{
+            receivedmessage = c.
+        }
+        
+    }
     
 }

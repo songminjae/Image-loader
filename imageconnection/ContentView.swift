@@ -14,6 +14,8 @@ struct ContentView: View {
     
     @State var totalclicked: Int = 0
     @State private var message: String = ""
+    let client = Client(host: "localhost", port: 7777)
+    @State private var receivedmessage: String = ""
     
     var body: some View {
         VStack{
@@ -26,14 +28,21 @@ struct ContentView: View {
             
             Button(action: {self.totalclicked = self.totalclicked - 1
                 //ClientStart(host: "143.248.140.100", port: 7777)
-                let client = Client(host: "143.248.140.100", port: 7777)
-                client.start()
+                //let client = Client(host: "143.248.140.100", port: 7777)
+                self.client.start()
             }){
                 Text("클라이언트")
             }
             
             TextField("input text", text: $message) //message라는 변수에 input text저장
             
+            Button(action: {self.totalclicked = self.totalclicked + 1
+                self.client.connection.send(data: (self.message.data(using: .utf8))!)
+            }){
+                Text("send")
+            }
+            
+            Text("this is what received: \(receivedmessage)")
         }
     }
 }
