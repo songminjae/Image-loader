@@ -13,7 +13,7 @@ import Network
 class Server{
     let port : NWEndpoint.Port  // 타입 정의
     let listener : NWListener
-    private var connectionsByID: [Int: ServerConnection] = [:]
+    var connectionsByID: [Int: ServerConnection] = [:]
     
     init(port: UInt16){
         self.port = NWEndpoint.Port(rawValue: port)!
@@ -77,11 +77,5 @@ class Server{
         }
     }
     //
-    func receive(receivedmessage: String){
-        for c in self.connectionsByID.values{
-            receivedmessage = c.
-        }
-        
-    }
     
 }

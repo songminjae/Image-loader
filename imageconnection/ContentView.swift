@@ -14,6 +14,7 @@ struct ContentView: View {
     
     @State var totalclicked: Int = 0
     @State private var message: String = ""
+    let server = Server(port: 7777)
     let client = Client(host: "localhost", port: 7777)
     @State private var receivedmessage: String = ""
     
@@ -21,7 +22,8 @@ struct ContentView: View {
         VStack{
             Text("\(totalclicked)")
             Button(action: {self.totalclicked = self.totalclicked + 1
-                ServerOn(port: 7777)
+                //ServerOn(port: 7777)
+                try! self.server.start()
             }){
                 Text("서버")
             }
@@ -42,6 +44,16 @@ struct ContentView: View {
                 Text("send")
             }
             
+            Button(action: {self.totalclicked = self.totalclicked + 1
+                for c in self.server.connectionsByID.values{
+                    
+                    self.receivedmessage = c.remessage ?? "-"
+                }
+                
+            }){
+                Text("receive")
+            }
+            
             Text("this is what received: \(receivedmessage)")
         }
     }
@@ -55,7 +67,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-
+/*
 // *****************************
 func ServerOn(port: UInt16){
     let server = Server(port: port)
@@ -79,3 +91,4 @@ func ClientStart(host: String, port: UInt16){
     }
     */
 }
+*/

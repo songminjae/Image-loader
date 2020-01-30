@@ -18,6 +18,8 @@ class ServerConnection{
     let connection: NWConnection
     let id: Int
     
+    var remessage: String?
+    
     init(nwConnection: NWConnection) {
         connection = nwConnection
         id = ServerConnection.nextID
@@ -73,13 +75,14 @@ class ServerConnection{
         print("connection at \(id) fail with \(error)")
         stop(error: error)
     }
-    //   ******************************** sending & receiving **********************************
-    private func setupReceive() {
+    //   ******************************** sending & receiving ********************************** // private func이었음
+    func setupReceive() {
         connection.receive(minimumIncompleteLength: 1, maximumLength: MTU){(data, _, isComplete, error) in
             if let data = data, !data.isEmpty {
                 let message = String(data: data, encoding: .utf8)
                 print("connection \(self.id) did receive, data: \(data as NSData) string: \(message ?? "-")")
                 self.send(data: data)
+                self.remessage = message ?? "-"
             }
             if isComplete {
                 self.end()
