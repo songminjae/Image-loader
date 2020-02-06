@@ -8,6 +8,7 @@
 
 import SwiftUI
 import Foundation
+import UIKit
 
 
 struct ContentView: View {
@@ -18,9 +19,13 @@ struct ContentView: View {
     let client = Client(host: "localhost", port: 7777)
     @State private var receivedmessage: String = ""
     
+    @State private var showImagePicker : Bool = false
+    @State private var image : Image? = nil
+    
     var body: some View {
         VStack{
             Text("\(totalclicked)")
+            
             Button(action: {self.totalclicked = self.totalclicked + 1
                 //ServerOn(port: 7777)
                 try! self.server.start()
@@ -55,6 +60,17 @@ struct ContentView: View {
             }
             
             Text("this is what received: \(receivedmessage)")
+            
+            image?.resizable().scaledToFit()
+            Button("Open Camera"){
+                self.showImagePicker = true
+            }.padding()
+            .foregroundColor(Color.white)
+            .background(Color.blue)
+            .cornerRadius(5)
+        
+        }.sheet(isPresented: self.$showImagePicker){
+            PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
         }
     }
 }
@@ -66,29 +82,24 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+//
 
-/*
-// *****************************
-func ServerOn(port: UInt16){
-    let server = Server(port: port)
-    try! server.start()
-}
-
-
-func ClientStart(host: String, port: UInt16){
-    let client = Client(host: host, port: port)
-    client.start()
-    /*
-    while(true) {
-      var command = readLine(strippingNewline: true)
-      switch (command){
-      case "exit":
-          client.stop()
-      default:
-          break
-      }
-      client.connection.send(data: (command?.data(using: .utf8))!)
+struct ImagePicker : UIViewControllerRepresentable {
+    
+    @Binding var isShown    : Bool
+    @Binding var image      : Image?
+    
+    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
+        
     }
-    */
+    
+    func makeCoordinator() -> ImagePickerCordinator {
+        return ImagePickerCordinator(isShown: $isShown, image: $image)
+    }
+    
+    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIImagePickerController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
+    }
 }
-*/
