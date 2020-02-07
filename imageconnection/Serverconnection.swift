@@ -81,7 +81,7 @@ class ServerConnection{
             if let data = data, !data.isEmpty {
                 let message = String(data: data, encoding: .utf8)
                 print("connection \(self.id) did receive, data: \(data as NSData) string: \(message ?? "-")")
-                self.send(data: data)
+                //self.send(data: data)
                 self.remessage = message ?? "-"
             }
             if isComplete {
