@@ -19,16 +19,19 @@ struct ContentView: View {
     let server = Server(port: 7777)
     let client = Client(host: "localhost", port: 7777)
     @State private var receivedmessage: String = ""
+    @State private var receiveimage: Image?
+    @State private var receivedata: Data?
+    @State private var receiveuiimage: UIImage?
     
     @State private var showImagePicker : Bool = false
     @State private var image : Image? = nil
     
     @State private var cpsimage: UIImage?
-    @State private var showimage: Image?
+    //@State private var showimage: Image?
     
     var body: some View {
         VStack{
-            Text("\(totalclicked)")
+            //Text("\(totalclicked)")
             
             Button(action: {self.totalclicked = self.totalclicked + 1
                 //ServerOn(port: 7777)
@@ -55,13 +58,9 @@ struct ContentView: View {
                     self.client.connection.send(data: (self.cpsimage?.pngData())!)
                 }
                 //self.testmessage = String(data: self.cpsimage?.pngData() ?? "-", encoding: .utf8) ?? "-"
-                
                 //let cpsimagedata = self.cpsimage?.pngData()
-                
                 self.client.connection.send(data: (self.message.data(using: .utf8))!)
-                
                 //self.client.connection.send(data: (self.cpsimage?.pngData())!)
-                
             }){
                 Text("send")
             }
@@ -69,14 +68,20 @@ struct ContentView: View {
             Button(action: {self.totalclicked = self.totalclicked + 1
                 for c in self.server.connectionsByID.values{
                     
-                    self.receivedmessage = c.remessage ?? "-"
+                    //self.receivedmessage = c.remessage ?? "-"
+                    self.receivedata = c.redata
+                    self.receiveuiimage = UIImage(data: self.receivedata!)
+                    self.receiveimage = Image(uiImage: self.receiveuiimage!)
+                    //self.receiveimage = c.reimage
                 }
                 
             }){
                 Text("receive")
             }
             
-            Text("this is what received: \(receivedmessage)")
+            receiveimage?.resizable().scaledToFit()
+            
+            //Text("this is what received: \(receivedmessage)")
         
             // ************************************************
             
@@ -88,16 +93,16 @@ struct ContentView: View {
             .background(Color.blue)
             .cornerRadius(5)
             
-            showimage?.resizable().scaledToFit()
+            //showimage?.resizable().scaledToFit()
             
         }.sheet(isPresented: self.$showImagePicker){
             PhotoCaptureView(showImagePicker: self.$showImagePicker, image: self.$image)
-        }.onAppear(perform: loadimage)
+        }//.onAppear(perform: loadimage)
     }
     
-    func loadimage(){
-        showimage = Image("cpsimage")
-    }
+    //func loadimage(){
+    //    showimage = Image("cpsimage")
+    //}
     
 }
 
@@ -129,3 +134,4 @@ struct ImagePicker : UIViewControllerRepresentable {
         return picker
     }
 }
+

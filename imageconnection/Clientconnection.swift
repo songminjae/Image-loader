@@ -93,7 +93,7 @@ class ClientConnection{
                 self.fail(error: error)
                 return
             }
-                print("connection did send, data: \(data as NSData)")
+                print("connection did send at client, data: \(data as NSData)")
         }))
     }
     

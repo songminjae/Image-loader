@@ -8,6 +8,7 @@
 
 import Foundation
 import Network
+import SwiftUI
 
 
 @available(OSX 10.14, *)
@@ -19,6 +20,7 @@ class ServerConnection{
     let id: Int
     
     var remessage: String?
+    var redata: Data?
     
     init(nwConnection: NWConnection) {
         connection = nwConnection
@@ -80,9 +82,10 @@ class ServerConnection{
         connection.receive(minimumIncompleteLength: 1, maximumLength: MTU){(data, _, isComplete, error) in
             if let data = data, !data.isEmpty {
                 let message = String(data: data, encoding: .utf8)
-                print("connection \(self.id) did receive, data: \(data as NSData) string: \(message ?? "-")")
+                print("connection \(self.id) did receive at server, data: \(data as NSData) string: \(message ?? "-")")
                 //self.send(data: data)
                 self.remessage = message ?? "-"
+                self.redata = data
             }
             if isComplete {
                 self.end()
@@ -100,7 +103,7 @@ class ServerConnection{
                 self.fail(error: error)
                 return
             }
-            print("connection \(self.id) did send, data: \(data as NSData)")
+            print("connection \(self.id) did send at server, data: \(data as NSData)")
         }))
     }
 }
