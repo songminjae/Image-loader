@@ -17,9 +17,9 @@ struct ContentView: View {
     @State private var message: String = ""
     
     let server = Server(port: 7777)
-    let client = Client(host: "localhost", port: 7777)
-    @State private var receivedmessage: String = ""
-    @State private var receiveimage: Image?
+    let client = Client(host: "192.168.0.29", port: 7777)
+    //@State private var receivedmessage: String = ""
+    @State private var receiveimage: Image? = nil
     @State private var receivedata: Data?
     @State private var receiveuiimage: UIImage?
     
@@ -80,7 +80,6 @@ struct ContentView: View {
             }
             
             receiveimage?.resizable().scaledToFit()
-            
             //Text("this is what received: \(receivedmessage)")
         
             // ************************************************
